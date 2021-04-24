@@ -8,3 +8,12 @@ npm start
 
 npm add node-sass
 npm rebuild node-sass
+
+Material Ui installation
+
+full package : npm install material-ui@latest
+
+sub packages :
+
+npm install @material-ui/lab
+npm install @material-ui/core
