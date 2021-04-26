@@ -81,10 +81,11 @@
         .input1 {
           display: flex;
           width: 100%;
-          height: 63px;
+          height: 40px;
           .input11 {
             width: 50%;
-            height: 60px;
+            height: 40px;
+            // border: 0.5px solid lightgray;
 
             //label font color black
             .MuiInputLabel-outlined {
@@ -101,9 +102,10 @@
           }
           .input12 {
             width: 50%;
-            height: 60px;
+            height: 40px;
             display: flex;
             justify-content: flex-start;
+            // border: 0.5px solid lightgray;
 
             //label font color black
             .MuiInputLabel-outlined {
@@ -121,33 +123,39 @@
           height: 70px;
           display: flex;
           justify-content: flex-start;
+          margin: 5px 0 0 0;
+          // border: 0.5px solid lightgray;
+          .input_form {
+            width: 97%;
+            
+            //Username label Adjustment
+            .MuiInputLabel-formControl {
+              top: -8px;
+              font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
+            }
 
-          //Username label Adjustment
-          .MuiInputLabel-formControl {
-            top: -8px;
-            font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
-          }
+            //label font color black
+            .MuiInputLabel-outlined {
+              color: #5f6368;
+            }
 
-          //label font color black
-          .MuiInputLabel-outlined {
-            color: #5f6368;
-          }
+            .MuiTypography-colorTextSecondary {
+              color: rgb(0, 0, 0);
+            }
+            // padding-top: 5px;
+            .input2_TextField {
+              
+              padding-top: 5px;
+              display: flex;
+              justify-content: flex-start;
+            }
 
-          .MuiTypography-colorTextSecondary {
-            color: rgb(0, 0, 0);
-          }
-          // padding-top: 5px;
-          .input2_TextField {
-            width: 90.5%;
-            padding-top: 5px;
-            display: flex;
-            justify-content: flex-start;
-          }
-
-          .gmail_HelperText {
-            font-size: 13px;
-            font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
-            color: #5f6368;
+            .gmail_HelperText {
+              font-size: 13px;
+              font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
+              color: #5f6368;
+              // border: 0.5px solid lightgray;
+            }
           }
         }
         .suggestion_Button {
@@ -171,6 +179,7 @@
               width: 50%;
               height: 40px;
               display: flex;
+              // border: 0.5px solid lightgray;
               .input1_TextField {
                 width: 95%;
               }
@@ -182,6 +191,8 @@
               width: 50%;
               height: 40px;
               display: flex;
+              // border: 0.5px solid lightgray;
+
               .input2_TextField {
                 width: 95%;
               }
@@ -195,6 +206,7 @@
             font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
             color: #5f6368;
             margin-left: 12px;
+            // border: 0.5px solid lightgray;
           }
         }
         .show_password {
@@ -269,5 +281,20 @@
         }
       }
     }
+  }
+}
+
+.errorMessage1 {
+  margin: 3px 0 15px 0;
+  width: 100%;
+  height: 20px;
+  // border: 0.5px solid lightgray;
+  color: #d93025;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .errorText {
+    margin: 0 0 0 8px;
+    font-size: 12px;
   }
 }

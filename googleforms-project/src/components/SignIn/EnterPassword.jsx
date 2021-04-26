@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./ForgetPassword.scss";
+import "./EnterPassword.scss";
 import { TextField, Checkbox } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 
-export class ForgetPassword extends Component {
+export class EnterPassword extends Component {
   constructor(props) {
     super(props);
 
@@ -12,7 +12,7 @@ export class ForgetPassword extends Component {
 
   render() {
     return (
-      <div className="forgetPassword_Container">
+      <div className="enterPassword_Container">
         <div className="sub_Container">
           <div className="inner_Container">
             <div className="google_Header">
@@ -24,13 +24,13 @@ export class ForgetPassword extends Component {
               <span className="e">e</span>
             </div>
             <div className="body">
-              <div className="forgetPassword_Header">
-                <div className="forgetPassword_Inner"></div>
+              <div className="enterPassword_Header">
+                <div className="enterPassword_Inner"></div>
               </div>
               <div className="sub_Header">
                 <div className="sub_Inner"></div>
               </div>
-              <div className="forgetPassword_Body">
+              <div className="enterPassword_Body">
                 <div className="input_Field">
                   <TextField
                     className="Em_InputField"
@@ -69,4 +69,4 @@ export class ForgetPassword extends Component {
   }
 }
 
-export default ForgetPassword;
+export default EnterPassword;
