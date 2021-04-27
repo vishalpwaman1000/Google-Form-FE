@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./ForgetEmail.scss";
-import Image from "./../../Asserts/FindEmailSendVCCode.png";
+import Image from "./../../../Asserts/FindEmailSendVCCode.png";
 import { Button } from "@material-ui/core";
 
 export class FindFLName extends Component {

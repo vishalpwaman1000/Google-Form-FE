@@ -90,7 +90,6 @@ export class FindFLName extends Component {
 
   render() {
     let state = this.state;
-    let error = this.state.errors;
     console.log(this.state);
     return (
       <div className="forgetEmail_Container">

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./SignUp.scss";
-import Registerlogo from "../../Asserts/logoRegister.svg";
+import Registerlogo from "../../../Asserts/logoRegister.svg";
 import {
   TextField,
   OutlinedInput,

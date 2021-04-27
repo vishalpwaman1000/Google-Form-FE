@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import "./EnterVCCode.scss";
+import "./ForgetEmail.scss";
 import { TextField, Button } from "@material-ui/core";
 
 import ErrorIcon from "@material-ui/icons/Error";
 
-export class EnterVCCode extends Component {
+export class ForgetEmail extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      code: "",
+      email: "",
       errors: {
-        code: "",
+        email: "",
       },
       errorStatus: {
-        code: false,
+        email: false,
       },
     };
   }
@@ -22,11 +22,11 @@ export class EnterVCCode extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     let state = this.state;
-    if (state.code === "") {
-      state.errorStatus.code = true;
-      state.errors.code = "Enter a code";
+    if (state.email === "") {
+      state.errorStatus.email = true;
+      state.errors.email = "Enter an email or phone number";
     } else {
-      state.errorStatus.code = false;
+      state.errorStatus.email = false;
     }
     this.setState({ state });
   };
@@ -34,7 +34,7 @@ export class EnterVCCode extends Component {
   handleChange = (event) => {
     event.preventDefault();
 
-    this.setState({ code: event.target.value });
+    this.setState({ email: event.target.value });
   };
 
   render() {
@@ -49,39 +49,34 @@ export class EnterVCCode extends Component {
               <span className="G">G</span>
               <span className="o1">o</span>
               <span className="o2">o</span>
-              <span className="g">g</span>
+              <span className="g">g</span> 
               <span className="l">l</span>
               <span className="e">e</span>
             </div>
             <div className="body">
               <div className="forgetEmail_Header">
-                <div className="forgetEmail_Inner">Enter the code</div>
+                <div className="forgetEmail_Inner">Find your email</div>
               </div>
               <div className="sub_Header">
                 <div className="sub_Inner">
-                  Please provide additional information to aid in the recovery
-                  process.
-                </div>
-                <div className="sub_Inner_Suggestion">
-                  An email with a verification code was just sent to
-                  vishalpwaman123@gmail.com
+                  Enter your phone number or recovery email
                 </div>
               </div>
               <div className="forgetEmail_Body">
                 <div className="input_Field">
                   <TextField
-                    error={state.errorStatus.code ? true : false}
+                    error={state.errorStatus.email ? true : false}
                     className="Em_InputField"
-                    label="Enter code"
+                    label="Phone number or email"
                     variant="outlined"
-                    value={state.code}
+                    value={state.email}
                     onChange={this.handleChange}
                   />
                 </div>
-                {state.errorStatus.code && (
+                {state.errorStatus.email && (
                   <div className="errorMessage">
                     <ErrorIcon fontSize="small" />
-                    <div className="errorText">{error.code}</div>
+                    <div className="errorText">{error.email}</div>
                   </div>
                 )}
                 <div className="bottons">
@@ -105,4 +100,4 @@ export class EnterVCCode extends Component {
   }
 }
 
-export default EnterVCCode;
+export default ForgetEmail;

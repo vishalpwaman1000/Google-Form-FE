@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import "./ForgetEmail.scss";
+import "./EnterVCCode.scss";
 import { TextField, Button } from "@material-ui/core";
 
 import ErrorIcon from "@material-ui/icons/Error";
 
-export class ForgetEmail extends Component {
+export class EnterVCCode extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
+      code: "",
       errors: {
-        email: "",
+        code: "",
       },
       errorStatus: {
-        email: false,
+        code: false,
       },
     };
   }
@@ -22,11 +22,11 @@ export class ForgetEmail extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     let state = this.state;
-    if (state.email === "") {
-      state.errorStatus.email = true;
-      state.errors.email = "Enter an email or phone number";
+    if (state.code === "") {
+      state.errorStatus.code = true;
+      state.errors.code = "Enter a code";
     } else {
-      state.errorStatus.email = false;
+      state.errorStatus.code = false;
     }
     this.setState({ state });
   };
@@ -34,7 +34,7 @@ export class ForgetEmail extends Component {
   handleChange = (event) => {
     event.preventDefault();
 
-    this.setState({ email: event.target.value });
+    this.setState({ code: event.target.value });
   };
 
   render() {
@@ -42,7 +42,7 @@ export class ForgetEmail extends Component {
     let error = this.state.errors;
     console.log(this.state);
     return (
-      <div className="forgetEmail_Container">
+      <div className="enterVCCode_Container">
         <div className="sub_Container">
           <div className="inner_Container">
             <div className="google_Header">
@@ -55,28 +55,33 @@ export class ForgetEmail extends Component {
             </div>
             <div className="body">
               <div className="forgetEmail_Header">
-                <div className="forgetEmail_Inner">Find your email</div>
+                <div className="forgetEmail_Inner">Enter the code</div>
               </div>
               <div className="sub_Header">
                 <div className="sub_Inner">
-                  Enter your phone number or recovery email
+                  Please provide additional information to aid in the recovery
+                  process.
+                </div>
+                <div className="sub_Inner_Suggestion">
+                  An email with a verification code was just sent to
+                  vishalpwaman123@gmail.com
                 </div>
               </div>
               <div className="forgetEmail_Body">
                 <div className="input_Field">
                   <TextField
-                    error={state.errorStatus.email ? true : false}
+                    error={state.errorStatus.code ? true : false}
                     className="Em_InputField"
-                    label="Phone number or email"
+                    label="Enter code"
                     variant="outlined"
-                    value={state.email}
+                    value={state.code}
                     onChange={this.handleChange}
                   />
                 </div>
-                {state.errorStatus.email && (
+                {state.errorStatus.code && (
                   <div className="errorMessage">
                     <ErrorIcon fontSize="small" />
-                    <div className="errorText">{error.email}</div>
+                    <div className="errorText">{error.code}</div>
                   </div>
                 )}
                 <div className="bottons">
@@ -100,4 +105,4 @@ export class ForgetEmail extends Component {
   }
 }
 
-export default ForgetEmail;
+export default EnterVCCode;
