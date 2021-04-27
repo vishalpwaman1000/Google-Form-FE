@@ -4,6 +4,10 @@ import SignUp from "./components/SignUp/SignUp.jsx";
 import SignIn from "./components/SignIn/SignIn.jsx";
 import EnterPassword from "./components/SignIn/EnterPassword.jsx";
 import ResetPassword from "./components/ResetPassword/ResetPassword.jsx";
+import ForgetEmail from "./components/ForgetEmail/ForgetEmail.jsx";
+import FindFLName from "./components/ForgetEmail/FindFLName.jsx";
+import SendVCCode from "./components/ForgetEmail/SendVCCode.jsx";
+import EnterVCCode from "./components/ForgetEmail/EnterVCCode.jsx";
 
 function App() {
   return (
@@ -14,6 +18,10 @@ function App() {
           <Route exact path="/SignIn" component={SignIn} />
           <Route exact path="/EnterPassword" component={EnterPassword} />
           <Route exact path="/ResetPassword" component={ResetPassword} />
+          <Route exact path="/forgetEmail" component={ForgetEmail} />
+          <Route exact path="/FindFLName" component={FindFLName} />
+          <Route exact path="/SendVCCode" component={SendVCCode} />
+          <Route exact path="/EnterVCCode" component={EnterVCCode} />
         </Switch>
       </Router>
     </div>

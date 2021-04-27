@@ -313,7 +313,7 @@ export class SignUp extends Component {
             </div>
             <div className="bottom_Button">
               <div className="signIn_Button">
-                <Button color="primary" className="s_Button">
+                <Button color="primary" className="s_Button" href="/SignIn">
                   Sign in instead
                 </Button>
               </div>
