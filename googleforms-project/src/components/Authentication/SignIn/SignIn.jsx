@@ -76,7 +76,11 @@ export class SignIn extends Component {
                   </div>
                 )}
                 <div className="forget_email">
-                  <Button color="primary" className="f_email" href="">
+                  <Button
+                    color="primary"
+                    className="f_email"
+                    href="/ForgetEmail"
+                  >
                     Forgot email?
                   </Button>
                 </div>
@@ -107,7 +111,6 @@ export class SignIn extends Component {
                 </div>
               </div>
             </div>
-            <div className="button_Container"></div>
           </div>
         </div>
       </div>

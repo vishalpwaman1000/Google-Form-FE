@@ -9,11 +9,16 @@ npm start
 npm add node-sass
 npm rebuild node-sass
 
-Material Ui installation
+# Material Ui installation
 
 full package : npm install material-ui@latest
 
-sub packages :
+# sub packages :
 
 npm install @material-ui/lab
 npm install @material-ui/core
+npm install @material-ui/icons
+
+#install react-router-dom
+
+npm install react-router-dom --save

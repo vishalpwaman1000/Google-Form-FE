@@ -1,0 +1,42 @@
+# SignUp
+{
+  "firstname": "rahul",
+  "lastname": "waman",
+  "email": "vishalpwaman1997@gmail.com",
+  "password": "Vishal@123",
+  "confirmpassword": "Vishal@123"
+}
+
+#SignInEmail
+{
+  "email": "vishalpwaman1997@gmail.com"
+}
+
+#SignInPassword
+{
+  "email": "string",
+  "password": "string"
+}
+
+#FindEmailId
+{
+  "email": "vishalpwaman1997@gmail.com"
+}
+
+#FindEmailFirstLastName
+{
+  "firstname": "string",
+  "lastname": "string",
+  "email": "string"
+}
+
+#SendOtpOnEmail
+{
+  "email": "vishalpwaman1997@gmail.com"
+}
+
+#EmailOtpVerification
+{
+  "email": "string",
+  "Otp": "string"
+}

@@ -1,23 +1,24 @@
-.signIn_Container {
+.sendOtpOnMobile_Container {
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  //   padding: 48px 40px 36px 40px;
+  padding: 15px 40px 10px 40px;
   .sub_Container {
     width: 448px;
-    height: 500px;
+    height: 550px;
     border: 0.5px solid lightgray;
     border-radius: 5px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
     .inner_Container {
       width: 368px;
-      height: 400px;
+      height: 420px;
       //   border: 0.5px solid lightgray;
+      margin: 50px 0 0 0;
       box-sizing: border-box;
       .google_Header {
         height: 34px;
@@ -70,7 +71,7 @@
         width: 368px;
         // border: 0.5px solid lightgray;
         box-sizing: border-box;
-        .signIn_Header {
+        .sendOtpOnMobile_Header {
           height: 47px;
           width: 368px;
           //   border: 0.5px solid lightgray;
@@ -80,9 +81,9 @@
           display: flex;
           justify-content: center;
           align-items: flex-end;
-          .signIn_Inner {
+          .sendOtpOnMobile_Inner {
             height: 30px;
-            width: 100px;
+            width: 300px;
           }
         }
         .sub_Header {
@@ -94,68 +95,51 @@
           justify-content: center;
           align-items: flex-end;
           color: #202124;
+          margin-top: 15px;
           .sub_Inner {
             font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
             font-size: 16px;
-            height: auto;
-            width: auto;
-            color: #202124;
+            height: 32px;
+            width: 282px;
+            border: 0.5px solid lightgray;
+            border-radius: 20px;
           }
         }
-        .signIn_Body {
+        .sub_TextHeader {
+          margin: 20px 0 0 0;
+          .sub_Inner {
+            display: flex;
+            justify-content: flex-start;
+            font-family: "Google Sans", "Noto Sans Myanmar UI", arial,
+              sans-serif;
+            color: #202124c7;
+            font-weight: 600;
+          }
+          .sub_TextInner {
+            display: flex;
+            justify-content: flex-start;
+            margin: 10px 0 0 0;
+            text-align: left;
+            font-size: 15px;
+          }
+        }
+        .sendOtpOnMobile_Body {
           width: 100%;
-          .input_Field {
-            margin: 30px 0 0 0;
+          .input_Field1 {
+            margin: 40px 0 0 0;
             width: 100%;
             .Em_InputField {
               width: 100%;
             }
+            color: #515355;
           }
-          .forget_email {
-            height: 32px;
-            width: 100%;
-            // border: 0.5px solid lightgray;
-            display: flex;
-            justify-content: flex-start;
-            letter-spacing: -1;
-            .f_email {
-              font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
-              font-size: 14px;
-              font-weight: 550;
-              text-transform: none;
-              color: #1a73e8;
-            }
-            .MuiButton-text {
-              padding: 0px;
-            }
-          }
-          .suggestion_Text {
-            font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
-            font-size: 14px;
-            margin: 50px 0 0 0;
-            width: 95.5%;
-          }
-          .learnmore_Button {
-            display: flex;
-            justify-content: flex-start;
-            height: 18px;
-            .lm_Button {
-              font-family: "Google Sans", "Roboto", Arial, sans-serif;
-              font-size: 15px;
-              font-weight: 550;
-              text-transform: none;
-              color: #1a73e8;
-            }
-            .MuiButton-text {
-              padding: 0px;
-            }
-          }
+
           .bottons {
             display: flex;
             justify-content: space-between;
-            margin: 50px 0 0 0;
-            .create_Account {
-              
+            margin: 50px 0px 0 0px;
+
+            .skipButton {
               .ca_Button {
                 font-family: "Google Sans", "Roboto", Arial, sans-serif;
                 font-size: 15px;
@@ -164,6 +148,7 @@
                 color: #1a73e8;
               }
             }
+
             .next_Button {
               .MuiButton-root {
                 width: 100px;
@@ -179,6 +164,11 @@
       }
     }
   }
+}
+.error {
+    border: 0.5px solid #fff;
+  height: 30px;
+  width: 100%;
 }
 
 .errorMessage {

@@ -113,7 +113,7 @@ export class EnterPassword extends Component {
                     <Button
                       color="primary"
                       className="ca_Button"
-                      href="/ResetPassword"
+                      href="/MobileOtpSend"
                     >
                       Forget password?
                     </Button>
