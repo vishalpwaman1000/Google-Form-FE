@@ -1,18 +1,18 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SignUp from "./Components/Authentication/SignUp/SignUp.jsx";
-import SignIn from "./Components/Authentication/SignIn/SignIn.jsx";
-import EnterPassword from "./Components/Authentication/SignIn/EnterPassword.jsx";
-import ResetPassword from "./Components/Authentication/ResetPassword/ResetPassword.jsx";
-import ForgetEmail from "./Components/Authentication/ForgetEmail/ForgetEmail.jsx";
-import FindFLName from "./Components/Authentication/ForgetEmail/FindFLName.jsx";
-import SendVCCode from "./Components/Authentication/ForgetEmail/SendVCCode.jsx";
-import EnterVCCode from "./Components/Authentication/ForgetEmail/EnterVCCode.jsx";
-import MobileOtpSend from "./Components/Authentication/ResetPassword/MobileOtpSend.jsx";
-import MobileOtpVerification from "./Components/Authentication/ResetPassword/MobileOtpVerification.jsx";
-import OtpEmailVerification from "./Components/Authentication/ResetPassword/OtpEmailVerification.jsx";
-import SendOtpOnMobile from "./Components/Authentication/MobileVerification/SendOtpOnMobile.jsx";
-import MOtpVerification from "./Components/Authentication/MobileVerification/MOtpVerification.jsx";
+import SignUp from "./components/Authentication/SignUp/SignUp.jsx";
+import SignIn from "./components/Authentication/SignIn/SignIn.jsx";
+import EnterPassword from "./components/Authentication/SignIn/EnterPassword.jsx";
+import ResetPassword from "./components/Authentication/ResetPassword/ResetPassword.jsx";
+import ForgetEmail from "./components/Authentication/ForgetEmail/ForgetEmail.jsx";
+import FindFLName from "./components/Authentication/ForgetEmail/FindFLName.jsx";
+import SendVCCode from "./components/Authentication/ForgetEmail/SendVCCode.jsx";
+import EnterVCCode from "./components/Authentication/ForgetEmail/EnterVCCode.jsx";
+import MobileOtpSend from "./components/Authentication/ResetPassword/MobileOtpSend.jsx";
+import MobileOtpVerification from "./components/Authentication/ResetPassword/MobileOtpVerification.jsx";
+import OtpEmailVerification from "./components/Authentication/ResetPassword/OtpEmailVerification.jsx";
+import SendOtpOnMobile from "./components/Authentication/MobileVerification/SendOtpOnMobile.jsx";
+import MOtpVerification from "./components/Authentication/MobileVerification/MOtpVerification.jsx";
 
 function App() {
   return (

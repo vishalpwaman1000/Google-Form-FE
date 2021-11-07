@@ -8,7 +8,7 @@ export default class userServices {
     return axiosService.post(url, data, false);
     }
     
-    SignInEmail(data){
-        let url = Config.
-    }
+    // SignInEmail(data){
+    //     let url = Config.
+    // }
 }
