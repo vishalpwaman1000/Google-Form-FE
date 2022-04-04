@@ -1,92 +1,56 @@
-.otpVerification_Container {
-  height: 100%;
-  width: 100%;
+@mixin flexcenter($Justice, $Align) {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  //   padding: 48px 40px 36px 40px;
+  justify-content: $Justice;
+  align-items: $Align;
+}
+
+@mixin HW($Height, $Weight) {
+  height: $Height;
+  width: $Weight;
+}
+
+.otpVerification_Container {
+  @include HW(100%, 100%);
+  @include flexcenter(center, center);
   .sub_Container {
-    width: 448px;
-    height: 600px;
+    @include HW(580px, 448px);
+    @include flexcenter(center, center);
     border: 0.5px solid lightgray;
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     .inner_Container {
-      width: 434px;
-      height: 500px;
+      @include HW(500px, 434px);
       //   border: 0.5px solid lightgray;
       box-sizing: border-box;
       .google_Header {
-        height: 10%;
-        width: 100%;
+        @include HW(10%, 100%);
         // border: 0.5px solid lightgray;
         box-sizing: border-box;
         font-weight: 500;
         line-height: 20.0004px;
         letter-spacing: -1px;
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
-        // font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
 
         .G {
           color: #4385f5;
-          font-size: 25px;
+          font-size: 22px;
           line-height: 20px;
-        }
-
-        .o1 {
-          padding-top: 3px;
-          font-size: 23px;
-          color: #eb4f42;
-        }
-
-        .o2 {
-          padding-top: 3px;
-          font-size: 23px;
-          color: #fabc04;
-        }
-
-        .g {
-          padding-top: 3px;
-          font-size: 23px;
-          color: #4385f5;
-        }
-
-        .l {
-          padding-top: 3px;
-          font-size: 23px;
-          color: #34a952;
-        }
-
-        .e {
-          padding-top: 3px;
-          font-size: 23px;
-          color: #eb4f42;
+          font-family: "Roboto";
         }
       }
       .body {
-        height: 95%;
-        width: 100%;
+        @include HW(95%, 100%);
         // border: 0.5px solid lightgray;
         box-sizing: border-box;
         .otpVerification_Header {
-          height: 120px;
-          width: 100%;
+          @include HW(120px, 100%);
+          @include flexcenter(center, center);
           //   border: 0.5px solid lightgray;
           box-sizing: border-box;
           font-family: "Google Sans", "Noto Sans Myanmar UI", arial, sans-serif;
           font-size: 24px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
           flex-direction: column;
           .otpVerification_Inner {
-            height: 30px;
-            width: 250px;
+            @include HW(30px, 250px);
             // border: 0.5px solid lightgray;
           }
           .sub_Inner_Suggestion {
@@ -97,21 +61,18 @@
           }
         }
         .sub_Header {
-          height: 32px;
-          width: 100%;
+          @include HW(32px, 100%);
+          @include flexcenter(center, flex-end);
           //   border: 0.5px solid lightgray;
           box-sizing: border-box;
-          display: flex;
-          justify-content: center;
-          //   flex-direction: column;
-          align-items: flex-end;
           color: #202124;
           margin: 25px 0 0 0;
           .sub_Inner {
+            @include HW(32px, 282px);
+            @include flexcenter(center, center);
             font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
             font-size: 16px;
-            height: 32px;
-            width: 282px;
+            font-weight: 500;
             border: 0.5px solid lightgray;
             border-radius: 20px;
           }
@@ -131,18 +92,14 @@
           }
 
           .suggestion {
-            width: 90%;
-            height: 80px;
+            @include HW(80px, 90%);
             // border: 0.5px solid lightgray;
 
             .SuggestionText1 {
-              display: flex;
-              justify-content: flex-start;
-              //   flex-direction: column;
+              @include flexcenter(flex-start, none);
               width: 100%;
               margin: 0 0 10px 0px;
-              font-family: "Google Sans", "Noto Sans Myanmar UI", arial,
-                sans-serif;
+              font-family: "Google Sans", "Noto Sans Myanmar UI", arial, sans-serif;
               font-size: 16px;
               font-weight: 600;
               line-height: 24px;
@@ -150,8 +107,7 @@
             }
           }
           .bottons {
-            display: flex;
-            justify-content: space-between;
+            @include flexcenter(space-between, none);
             margin: 20px 0px 0 30px;
             .tryAnotherButton {
               .ca_Button {
@@ -166,8 +122,7 @@
             .next_Button {
               margin-right: 40px;
               .MuiButton-root {
-                width: 100px;
-                height: 40px;
+                @include HW(40px, 100px);
                 font-family: "Google Sans", "Roboto", Arial, sans-serif;
                 background-color: #1a73e8;
                 text-transform: none;
@@ -183,21 +138,17 @@
 
 .errorMessage {
   margin: 3px 0 5px 0;
-  width: 100%;
-  height: 20px;
+  @include HW(20px, 100%);
+  @include flexcenter(flex-start, center);
   // border: 0.5px solid lightgray;
   font-family: "Roboto", "RobotoDraft", Helvetica, Arial, sans-serif;
   color: #d93025;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   .errorText {
     margin: 0 0 0 8px;
     font-size: 13px;
   }
 }
 .error {
-//   border: 0.5px solid lightgray;
-  height: 25px;
-  width: 100%;
+  //   border: 0.5px solid lightgray;
+  @include HW(25px, 100%);
 }

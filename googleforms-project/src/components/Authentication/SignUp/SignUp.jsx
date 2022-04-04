@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import "./SignUp.scss";
-import Registerlogo from "../../../Asserts/logoRegister.svg";
+import React, { Component } from 'react'
+import './SignUp.scss'
+import Registerlogo from '../../../Asserts/logoRegister.svg'
 import {
   TextField,
   OutlinedInput,
@@ -10,31 +10,43 @@ import {
   FormHelperText,
   Button,
   Checkbox,
-} from "@material-ui/core";
-import ErrorIcon from "@material-ui/icons/Error";
+} from '@material-ui/core'
+import CloseIcon from '@material-ui/icons/Close'
+import ErrorIcon from '@material-ui/icons/Error'
+import IconButton from '@material-ui/core/IconButton'
+import Snackbar from '@material-ui/core/Snackbar'
+
+import GoogleFormServices from '../../../Services/GoogleFormServices'
+
+const googleServices = new GoogleFormServices()
 
 const validateForm = (errors) => {
-  let valid = true;
+  let valid = true
   Object.values(errors).forEach((val) => {
-    val === true && (valid = false);
-  });
-  return valid;
-};
+    val === true && (valid = false)
+  })
+  return valid
+}
 
 export class SignUp extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      open: false,
+      firstName: '',
+      lastName: '',
+      email: '',
+      MobileNumber: '',
+      RecoveryEmail: '',
+      password: '',
+      confirmPassword: '',
       showPassword: false,
       errors: {
         firstName: false,
         lastName: false,
         email: false,
+        MobileNumber: false,
+        RecoveryEmail: false,
         password: false,
         confirmPassword: false,
       },
@@ -42,78 +54,92 @@ export class SignUp extends Component {
         Name: null,
         email: null,
         password: null,
+        MobileNumber: false,
       },
-    };
+    }
+  }
+
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    this.setState({ open: false })
   }
 
   handleNullValidation = (event) => {
-    event.preventDefault();
-    let state = this.state;
-    let errors = this.state.errors;
-    let errorMessage = this.state.errorMessage;
+    event.preventDefault()
+    let state = this.state
+    let errors = this.state.errors
+    let errorMessage = this.state.errorMessage
 
-    if (state.firstName === "") {
-      errors.firstName = true;
+    if (state.firstName === '') {
+      errors.firstName = true
       errorMessage.Name =
-        state.firstName.length === 0 ? "Enter first name" : null;
+        state.firstName.length === 0 ? 'Enter first name' : null
     }
 
-    if (state.lastName === "") {
-      errors.lastName = true;
-      errorMessage.Name = "Enter last name";
+    if (state.lastName === '') {
+      errors.lastName = true
+      errorMessage.Name = 'Enter last name'
     }
 
-    if (state.firstName === "" && state.lastName === "") {
-      errors.firstName = true;
-      errors.lastName = true;
-      errorMessage.Name = "Enter first name & last name";
+    if (state.firstName === '' && state.lastName === '') {
+      errors.firstName = true
+      errors.lastName = true
+      errorMessage.Name = 'Enter first name & last name'
     }
 
-    if (state.email === "") {
-      errors.email = true;
-      errorMessage.email = "Choose a Gmail address";
+    if (state.email === '') {
+      errors.email = true
+      errorMessage.email = 'Choose a Gmail address'
     } else if (!(state.email.length >= 6 && state.email.length <= 30)) {
-      errors.email = true;
+      errors.email = true
       errorMessage.email =
-        "Sorry, your username must be between 6 and 30 characters long.";
+        'Sorry, your username must be between 6 and 30 characters long.'
     }
 
-    if (state.password === "") {
-      errors.password = true;
-      errorMessage.password = "Enter a password";
+    if (state.MobileNumber === '') {
+      errors.MobileNumber = true
+      errorMessage.MobileNumber =
+        state.MobileNumber.length === 0 ? 'Enter Mobile Number' : null
+    }
+
+    if (state.password === '') {
+      errors.password = true
+      errorMessage.password = 'Enter a password'
     } else if (state.password.length < 8) {
-      errors.password = true;
-      errorMessage.password = "Use 8 characters or more for your password";
+      errors.password = true
+      errorMessage.password = 'Use 8 characters or more for your password'
     }
 
     if (state.password.length >= 8) {
       if (state.confirmPassword >= 1) {
         if (state.password !== state.confirmPassword) {
-          errors.password = true;
-          errorMessage.password = "Password not match";
+          errors.password = true
+          errorMessage.password = 'Password not match'
         }
-      } else if (state.confirmPassword === "") {
-        errors.password = true;
-        errorMessage.password = "Enter a confirm password";
+      } else if (state.confirmPassword === '') {
+        errors.password = true
+        errorMessage.password = 'Enter a confirm password'
       }
     }
-    this.setState({ errors, errorMessage });
-    // this.setState({ errors });
-  };
+    this.setState({ errors,  errorMessage })
+  }
 
   handleInvalidNullity = (event) => {
-    event.preventDefault();
-    let state = this.state;
-    let errors = this.state.errors;
+    event.preventDefault()
+    let state = this.state
+    let errors = this.state.errors
 
     if (state.firstName.length > 0) {
-      errors.firstName = false;
+      errors.firstName = false
     }
     if (state.lastName.length > 0) {
-      errors.lastName = false;
+      errors.lastName = false
     }
     if (state.email.length >= 6 && state.email.length <= 30) {
-      errors.email = false;
+      errors.email = false
     }
     // if (state.password.length >= 8) {
     //   errors.password = false;
@@ -121,58 +147,84 @@ export class SignUp extends Component {
     if (state.password.length >= 8) {
       if (state.confirmPassword.length > 0) {
         if (state.password === state.confirmPassword) {
-          errors.password = false;
+          errors.password = false
         }
       }
     }
-    this.setState({ errors });
-  };
+    this.setState({ errors })
+  }
 
   handleSubmit = (event) => {
-    event.preventDefault();
-    let state = this.state;
-    this.handleNullValidation(event);
-    this.handleInvalidNullity(event);
+    event.preventDefault()
+    let state = this.state
+    this.handleNullValidation(event)
+    this.handleInvalidNullity(event)
     try {
       if (validateForm(state.errors)) {
-        console.log("Acceptable");
+        console.log('Acceptable')
+        let data = {
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          userName: this.state.email,
+          password: this.state.password,
+          mobileNumber: this.state.MobileNumber,
+          recoveryEmail: this.state.RecoveryEmail,
+        }
+        googleServices
+          .Registration(data)
+          .then((data) => {
+            console.log('Data : ', data)
+            if (data.data.isSuccess) {
+              this.props.history.push({
+                pathname: '/SignInEmail',
+                //state: data_you_need_to_pass
+              })
+            } else {
+              console.log('Error : ', data.data.message)
+              this.setState({ open: true })
+              this.setState({ message: data.data.message })
+            }
+          })
+          .catch((error) => {
+            console.log('Error : ', error)
+          })
       } else {
-        console.log("Not Acceptable");
+        console.log('Not Acceptable')
       }
     } catch {}
-  };
+  }
 
   handleChecked = (event) => {
-    event.preventDefault();
-    let state = this.state;
-    state.showPassword = !state.showPassword;
-    this.setState({ state });
-  };
+    event.preventDefault()
+    let state = this.state
+    state.showPassword = !state.showPassword
+    this.setState({ state })
+  }
 
   handleChange = (event) => {
-    event.preventDefault();
-    const { name, value } = event.target;
-    let errorMessage = this.state.errorMessage;
-    console.log(" " + [name] + " " + value);
-    this.setState({ errorMessage, [name]: value });
-  };
+    event.preventDefault()
+    const { name, value } = event.target
+    let errorMessage = this.state.errorMessage
+    console.log(' ' + [name] + ' ' + value)
+    this.setState({ errorMessage, [name]: value })
+  }
 
   render() {
-    var state = this.state;
-    var errors = this.state.errors;
-    var errorMessage = this.state.errorMessage;
-    console.log(this.state);
+    var state = this.state
+    var errors = this.state.errors
+    var errorMessage = this.state.errorMessage
+    console.log(this.state)
     return (
       <div className="signUp_Container">
         <div className="sub_Container">
           <div className="input_Container">
             <div className="google_Font">
-              <span className="G">G</span>
-              <span className="o1">o</span>
-              <span className="o2">o</span>
-              <span className="g">g</span>
-              <span className="l">l</span>
-              <span className="e">e</span>
+              <span className="G">VCoder</span>
+              {/* <span className="G">C</span>
+              <span className="G">o</span>
+              <span className="G">d</span>
+              <span className="G">e</span>
+              <span className="G">r</span> */}
             </div>
             <div className="main_headerText">Create your Google Account</div>
             <div className="input_Field1">
@@ -226,8 +278,8 @@ export class SignUp extends Component {
                     className="input2_Textfield"
                     name="email"
                     style={{
-                      height: "58%",
-                      width: "100%",
+                      height: '58%',
+                      width: '100%',
                     }}
                     endAdornment={
                       <InputAdornment position="end">@gmail.com</InputAdornment>
@@ -256,6 +308,43 @@ export class SignUp extends Component {
                   Use my current email address instead
                 </Button>
               </div>
+              <div className="ExtraField">
+                <div className="p_field">
+                  <div className="MobileNumber">
+                    <TextField
+                      error={errors.MobileNumber ? true : false}
+                      autoComplete="off"
+                      className="input1_TextField"
+                      label="Mobile Number"
+                      type="text"
+                      variant="outlined"
+                      size="small"
+                      name="MobileNumber"
+                      value={state.MobileNumber}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="RecoveryEmail">
+                    <TextField
+                      autoComplete="off"
+                      className="input2_TextField"
+                      label="Recovery Email"
+                      type="text"
+                      variant="outlined"
+                      size="small"
+                      name="RecoveryEmail"
+                      value={state.RecoveryEmail}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                </div>
+                {errors.MobileNumber ? (
+                  <div className="errorMessage1">
+                    <ErrorIcon fontSize="small" />
+                    <div className="errorText">{errorMessage.MobileNumber}</div>
+                  </div>
+                ) : null}
+              </div>
               <div className="passwordField">
                 <div className="p_field">
                   <div className="password">
@@ -264,7 +353,7 @@ export class SignUp extends Component {
                       autoComplete="off"
                       className="input1_TextField"
                       label="password"
-                      type={state.showPassword ? "text" : "password"}
+                      type={state.showPassword ? 'text' : 'password'}
                       variant="outlined"
                       size="small"
                       name="password"
@@ -277,7 +366,7 @@ export class SignUp extends Component {
                       autoComplete="off"
                       className="input2_TextField"
                       label="Confirm password"
-                      type={state.showPassword ? "text" : "password"}
+                      type={state.showPassword ? 'text' : 'password'}
                       variant="outlined"
                       size="small"
                       name="confirmPassword"
@@ -344,9 +433,34 @@ export class SignUp extends Component {
             </div>
           </div>
         </div>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.open}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+          message={this.state.message}
+          action={
+            <React.Fragment>
+              <Button color="secondary" size="small" onClick={this.handleClose}>
+                UNDO
+              </Button>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={this.handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+          }
+        />
       </div>
-    );
+    )
   }
 }
 
-export default SignUp;
+export default SignUp

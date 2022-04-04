@@ -1,91 +1,71 @@
 import React, { Component } from 'react'
-import './ForgetEmail.scss'
+import './../ForgetEmail/ForgetEmail.scss'
 import Image from './../../../Asserts/FindEmailSendVCCode.png'
 import { Button } from '@material-ui/core'
 import GoogleFormServices from '../../../Services/GoogleFormServices'
-import CloseIcon from '@material-ui/icons/Close'
-import ErrorIcon from '@material-ui/icons/Error'
-import IconButton from '@material-ui/core/IconButton'
-import Snackbar from '@material-ui/core/Snackbar'
 import Backdrop from '@material-ui/core/Backdrop'
 import CircularProgress from '@material-ui/core/CircularProgress'
-const googleServices = new GoogleFormServices()
 
-export class FindFLName extends Component {
+const googleService = new GoogleFormServices()
+
+export class OtpEmailVerification extends Component {
   constructor(props) {
     super()
     this.state = {
-      email: props.location.email,
-      open: false,
+      email:
+        props.location.email === undefined
+          ? '[email ID]'
+          : props.location.email,
+      recoveryEmail: props.location.recoveryEmail,
       openProgress: false,
     }
   }
 
-  handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return
-    }
-
-    this.setState({ open: false })
-  }
-
   handleSubmit = (event) => {
     event.preventDefault()
-    if (this.state.email !== undefined) {
-      console.log('Acceptable')
+    if (this.state.email !== '[email ID]') {
       this.setState({ openProgress: true })
+      console.log('Acceptable')
       let data = {
-        emailID: this.state.email,
+        emailID: this.state.recoveryEmail,
       }
-
-      googleServices
+      console.log('SendVerificationCodeOnEmail Request Body', data)
+      googleService
         .SendVerificationCodeOnEmail(data)
         .then((data) => {
           console.log('Data : ', data)
+          this.setState({ openProgress: false })
           if (data.data.isSuccess) {
-            this.setState({ open: true, openProgress: false })
-            this.setState({ message: data.data.isSuccess })
             this.props.history.push({
-              pathname: '/EnterVCCode',
+              pathname: '/MobileOtpVerification',
+              recoveryAccount: this.state.recoveryEmail,
               email: this.state.email,
             })
           } else {
-            this.setState({ open: true, openProgress: false })
-            this.setState({ message: data.data.isSuccess })
+            this.setState({ open: true, message: data.data.message })
           }
         })
         .catch((error) => {
           console.log('Error : ', error)
+          this.setState({ openProgress: false })
         })
     } else {
       console.log('Not Acceptable')
-      this.setState({ open: true })
-      this.setState({ message: 'Something Went Wrong' })
+      this.setState({ open: true, message: 'Something Went Wrong' })
     }
   }
 
-  handleProgressClose = () => {
-    this.setState({})
-  }
-
   render() {
-    console.log('Status : ', this.state)
     return (
       <div className="forgetEmail_Container">
         <div className="sub_Container" style={{ width: '442px' }}>
           <div className="inner_Container">
             <div className="google_Header">
               <span className="G">VCoder</span>
-              {/* <span className="o1">o</span>
-              <span className="o2">o</span>
-              <span className="g">g</span>
-              <span className="l">l</span>
-              <span className="e">e</span> */}
             </div>
             <div className="body">
               <div className="forgetEmail_Header">
-                <div className="forgetEmail_Inner">Get a verification code</div>
-                {/* <div className='forgetEmail_SubInner'>To help keep your account safe, Google wants to make sure it’s really you trying to sign in</div> */}
+                <div className="forgetEmail_Inner">Get a verification Link</div>
               </div>
               <div
                 className="forgetEmail_Body"
@@ -100,20 +80,20 @@ export class FindFLName extends Component {
                 <div className="image">
                   <img src={Image} className="image" alt="" />
                 </div>
-                <div className="suggestionText">
+                <div className="suggestionText" style={{ width: '100%' }}>
                   <div
                     className="text"
                     style={{
-                      width: '70%',
+                      width: '100%',
                       textAlign: 'left',
                       fontSize: '14px',
-                      fontFamily: 'roboto',
+                      fontFamily:
+                        'roboto, Noto Sans Myanmar UI, arial, sans-serif',
                       lineHeight: '20.0004px',
-                      fontWeight: 500,
                     }}
                   >
-                    Google will send a verification code to&nbsp;
-                    {this.state.email}
+                    Vcoder will send a verification Code to&nbsp;
+                    <b>{this.state.recoveryEmail}</b>
                   </div>
                 </div>
                 <div className="bottons" style={{ width: '100%' }}>
@@ -138,31 +118,6 @@ export class FindFLName extends Component {
             </div>
           </div>
         </div>
-        <Snackbar
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          open={this.state.open}
-          autoHideDuration={6000}
-          onClose={this.handleClose}
-          message={this.state.message}
-          action={
-            <React.Fragment>
-              <Button color="secondary" size="small" onClick={this.handleClose}>
-                UNDO
-              </Button>
-              <IconButton
-                size="small"
-                aria-label="close"
-                color="inherit"
-                onClick={this.handleClose}
-              >
-                <CloseIcon fontSize="small" />
-              </IconButton>
-            </React.Fragment>
-          }
-        />
         <Backdrop
           className="Progress"
           open={this.state.openProgress}
@@ -176,4 +131,4 @@ export class FindFLName extends Component {
   }
 }
 
-export default FindFLName
+export default OtpEmailVerification

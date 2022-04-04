@@ -1,55 +1,101 @@
-import React, { Component } from "react";
-import "./SignIn.scss";
-import { TextField, Button } from "@material-ui/core";
+import React, { Component } from 'react'
+import './SignIn.scss'
+import { TextField, Button } from '@material-ui/core'
+import GoogleFormService from '../../../Services/GoogleFormServices'
+import Snackbar from '@material-ui/core/Snackbar'
+import CloseIcon from '@material-ui/icons/Close'
+import ErrorIcon from '@material-ui/icons/Error'
+import IconButton from '@material-ui/core/IconButton'
 
-import ErrorIcon from "@material-ui/icons/Error";
+const googleServices = new GoogleFormService()
 
 export class SignIn extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      email: "",
+      open: false,
+      email: '',
+      message: '',
       errors: {
         emailStatus: false,
-        email: "",
+        email: '',
       },
-    };
+    }
+  }
+
+  handleClick = () => {
+    this.setState({ open: true })
+  }
+
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    this.setState({ open: false })
   }
 
   handleSubmit = (event) => {
-    event.preventDefault();
-    let state = this.state;
-    if (state.email === "") {
-      state.errors.emailStatus = true;
-      state.errors.email = "Enter an email or phone number";
+    event.preventDefault()
+    let state = this.state
+    if (state.email === '') {
+      state.errors.emailStatus = true
+      state.errors.email = 'Enter an email or phone number'
     } else {
-      state.errors.emailStatus = false;
+      state.errors.emailStatus = false
+      console.log('Acceptable')
+
+      let data = {
+        emailID: this.state.email,
+      }
+
+      googleServices
+        .SignInEmailID(data)
+        .then((data) => {
+          console.log('Data : ', data)
+          if (data.data.isSuccess) {
+            this.props.history.push({
+              pathname: '/SignInEnterPassword',
+              email: this.state.email,
+              firstName: data.data.firstName,
+              lastName: data.data.lastName,
+              mobileNumber: data.data.mobileNumber,
+              recoveryEmail: data.data.recoveryEmail,
+            })
+          } else {
+            this.setState({ open: true })
+            this.setState({ message: data.data.message })
+          }
+        })
+        .catch((error) => {
+          console.log('Error : ', error)
+        })
     }
-    this.setState({ state });
-  };
+    this.setState({ state })
+  }
 
   handleChange = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    this.setState({ email: event.target.value });
-  };
+    this.setState({ email: event.target.value })
+  }
 
   render() {
-    let state = this.state;
-    let error = this.state.errors;
-    console.log(this.state);
+    let state = this.state
+    let error = this.state.errors
+    console.log(this.state)
     return (
       <div className="signIn_Container">
         <div className="sub_Container">
           <div className="inner_Container">
             <div className="google_Header">
-              <span className="G">G</span>
-              <span className="o1">o</span>
+              <span className="G">VCoder</span>
+              {/* <span className="o1">o</span>
               <span className="o2">o</span>
               <span className="g">g</span>
               <span className="l">l</span>
-              <span className="e">e</span>
+              <span className="e">e</span> */}
             </div>
             <div className="body">
               <div className="signIn_Header">
@@ -113,9 +159,34 @@ export class SignIn extends Component {
             </div>
           </div>
         </div>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.open}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+          message={this.state.message}
+          action={
+            <React.Fragment>
+              <Button color="secondary" size="small" onClick={this.handleClose}>
+                UNDO
+              </Button>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={this.handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+          }
+        />
       </div>
-    );
+    )
   }
 }
 
-export default SignIn;
+export default SignIn

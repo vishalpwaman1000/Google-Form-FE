@@ -1,18 +1,18 @@
-import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SignUp from "./components/Authentication/SignUp/SignUp.jsx";
-import SignIn from "./components/Authentication/SignIn/SignIn.jsx";
-import EnterPassword from "./components/Authentication/SignIn/EnterPassword.jsx";
-import ResetPassword from "./components/Authentication/ResetPassword/ResetPassword.jsx";
-import ForgetEmail from "./components/Authentication/ForgetEmail/ForgetEmail.jsx";
-import FindFLName from "./components/Authentication/ForgetEmail/FindFLName.jsx";
-import SendVCCode from "./components/Authentication/ForgetEmail/SendVCCode.jsx";
-import EnterVCCode from "./components/Authentication/ForgetEmail/EnterVCCode.jsx";
-import MobileOtpSend from "./components/Authentication/ResetPassword/MobileOtpSend.jsx";
-import MobileOtpVerification from "./components/Authentication/ResetPassword/MobileOtpVerification.jsx";
-import OtpEmailVerification from "./components/Authentication/ResetPassword/OtpEmailVerification.jsx";
-import SendOtpOnMobile from "./components/Authentication/MobileVerification/SendOtpOnMobile.jsx";
-import MOtpVerification from "./components/Authentication/MobileVerification/MOtpVerification.jsx";
+import './App.css'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import SignUp from './components/Authentication/SignUp/SignUp.jsx'
+import SignIn from './components/Authentication/SignIn/SignIn.jsx'
+import EnterPassword from './components/Authentication/SignIn/EnterPassword.jsx'
+import ResetPassword from './components/Authentication/ResetPassword/ResetPassword.jsx'
+import ForgetEmail from './components/Authentication/ForgetEmail/ForgetEmail.jsx'
+import FindFLName from './components/Authentication/ForgetEmail/FindFLName.jsx'
+import SendVCCode from './components/Authentication/ForgetEmail/SendVCCode.jsx'
+import EnterVCCode from './components/Authentication/ForgetEmail/EnterVCCode.jsx'
+import MobileOtpSend from './components/Authentication/ResetPassword/MobileOtpSend.jsx'
+import MobileOtpVerification from './components/Authentication/ResetPassword/OtpVerification.jsx'
+import OtpEmailVerification from './components/Authentication/ResetPassword/EmailSendOtp.jsx'
+import FinalFindEmailMessage from './components/Authentication/ForgetEmail/FinalFindEmailMessage'
+import Dashboard from './components/Dashboard/Dashboard'
 
 function App() {
   return (
@@ -30,20 +30,24 @@ function App() {
           <Route exact path="/MobileOtpSend" component={MobileOtpSend} />
           <Route
             exact
-            path="/OtpEmailVerification"
-            component={OtpEmailVerification}
-          />
-          <Route
-            exact
             path="/MobileOtpVerification"
             component={MobileOtpVerification}
           />
-          <Route exact path="/SendOtpOnMobile" component={SendOtpOnMobile} />
-          <Route exact path="/MOtpVerification" component={MOtpVerification} />
+          <Route
+            exact
+            path="/OtpEmailVerification"
+            component={OtpEmailVerification}
+          />
+          <Route exact path="/Dashboard" component={Dashboard} />
+          <Route
+            exact
+            path="/FinalFindEmailMessage"
+            component={FinalFindEmailMessage}
+          />
         </Switch>
       </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

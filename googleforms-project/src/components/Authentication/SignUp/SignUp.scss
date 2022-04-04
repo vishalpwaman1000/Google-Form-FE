@@ -1,13 +1,20 @@
-.signUp_Container {
-  height: 100%;
-  width: 100%;
+@mixin flexcenter($Justice, $Align) {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: $Justice;
+  align-items: $Align;
+}
+
+@mixin HW($Height, $Width) {
+  height: $Height;
+  width: $Width;
+}
+
+.signUp_Container {
+  @include HW(100%, 100%);
+  @include flexcenter(center, center);
 
   .sub_Container {
-    height: 80%;
-    width: 748px;
+    @include HW(80%, 748px);
     border: 0.5px solid lightgray;
     border-radius: 8px;
     margin: 50px 30px;
@@ -16,75 +23,67 @@
     font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
 
     .input_Container {
-      height: 100%;
-      width: 450px;
+      @include HW(100%, 450px);
 
       .google_Font {
-        width: 100%;
-        height: 50px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
+        @include HW(50px, 100%);
+        @include flexcenter(flex-start, center);
         // font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
 
         .G {
           color: #4385f5;
-          font-size: 25px;
-          font-weight: 500;
+          font-size: 22px;
+          font-weight: 400;
+          font-family: "Roboto";
           line-height: 20px;
         }
 
-        .o1 {
-          padding-top: 3px;
-          font-size: 22px;
-          color: #eb4f42;
-        }
+        // .o1 {
+        //   padding-top: 3px;
+        //   font-size: 22px;
+        //   color: #eb4f42;
+        // }
 
-        .o2 {
-          padding-top: 3px;
-          font-size: 22px;
-          color: #fabc04;
-        }
+        // .o2 {
+        //   padding-top: 3px;
+        //   font-size: 22px;
+        //   color: #fabc04;
+        // }
 
-        .g {
-          padding-top: 3px;
-          font-size: 22px;
-          color: #4385f5;
-        }
+        // .g {
+        //   padding-top: 3px;
+        //   font-size: 22px;
+        //   color: #4385f5;
+        // }
 
-        .l {
-          padding-top: 3px;
-          font-size: 22px;
-          color: #34a952;
-        }
+        // .l {
+        //   padding-top: 3px;
+        //   font-size: 22px;
+        //   color: #34a952;
+        // }
 
-        .e {
-          padding-top: 3px;
-          font-size: 22px;
-          color: #eb4f42;
-        }
+        // .e {
+        //   padding-top: 3px;
+        //   font-size: 22px;
+        //   color: #eb4f42;
+        // }
       }
       .main_headerText {
-        width: 100%;
-        height: 50px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
+        @include HW(50px, 100%);
+        @include flexcenter(flex-start, center);
         font-family: "Google Sans", "Noto Sans Myanmar UI", arial, sans-serif;
         font-size: 24px;
         letter-spacing: 0.2px;
       }
       .input_Field1 {
-        width: 100%;
-        height: 62%;
-        margin-top: 30px;
+        @include HW(62%, 100%);
+        margin-top: 10px;
         .input1 {
           display: flex;
-          width: 100%;
-          height: 40px;
+          @include HW(40px, 100%);
+
           .input11 {
-            width: 50%;
-            height: 40px;
+            @include HW(40px, 50%);
             // border: 0.5px solid lightgray;
 
             //label font color black
@@ -92,8 +91,8 @@
               color: #5f6368;
             }
 
-            display: flex;
-            justify-content: flex-start;
+            @include flexcenter(flex-start, none);
+
             .input1_TextField {
               font-family: "Roboto", "RobotoDraft", Helvetica, Arial, sans-serif;
               font-size: 12px;
@@ -101,10 +100,9 @@
             }
           }
           .input12 {
-            width: 50%;
-            height: 40px;
-            display: flex;
-            justify-content: flex-start;
+            @include HW(40px, 50%);
+            @include flexcenter(flex-start, none);
+
             // border: 0.5px solid lightgray;
 
             //label font color black
@@ -119,15 +117,14 @@
         }
 
         .input2 {
-          width: 100%;
-          height: 70px;
-          display: flex;
-          justify-content: flex-start;
+          @include HW(70px, 100%);
+          @include flexcenter(flex-start, none);
+
           margin: 5px 0 0 0;
           // border: 0.5px solid lightgray;
           .input_form {
             width: 97%;
-            
+
             //Username label Adjustment
             .MuiInputLabel-formControl {
               top: -8px;
@@ -144,10 +141,8 @@
             }
             // padding-top: 5px;
             .input2_TextField {
-              
               padding-top: 5px;
-              display: flex;
-              justify-content: flex-start;
+              @include flexcenter(flex-start, none);
             }
 
             .gmail_HelperText {
@@ -159,9 +154,9 @@
           }
         }
         .suggestion_Button {
-          display: flex;
-          justify-content: flex-start;
-          margin: 10px 0 0 0;
+          @include flexcenter(flex-start, none);
+
+          margin: 5px 0 0 0;
           .s_Button {
             font-family: "Google Sans", "Roboto", Arial, sans-serif;
             font-size: 15px;
@@ -170,53 +165,58 @@
             color: #1a73e8;
           }
         }
-        .passwordField {
-          margin: 30px 0 0 0;
-          .p_field {
-            width: 100%;
-            display: flex;
-            .password {
-              width: 50%;
-              height: 40px;
-              display: flex;
-              // border: 0.5px solid lightgray;
-              .input1_TextField {
-                width: 95%;
-              }
-              .MuiInputLabel-outlined {
-                color: #5f6368;
-              }
-            }
-            .confirmPassword {
-              width: 50%;
-              height: 40px;
-              display: flex;
-              // border: 0.5px solid lightgray;
 
-              .input2_TextField {
-                width: 95%;
-              }
-              .MuiInputLabel-outlined {
-                color: #5f6368;
-              }
+        .ExtraField {
+          margin: 5px 0 0 0;
+        }
+
+        .passwordField {
+          margin: 20px 0 0 0;
+        }
+
+        .p_field {
+          width: 100%;
+          display: flex;
+          .password,
+          .MobileNumber {
+            @include HW(40px, 50%);
+            display: flex;
+            // border: 0.5px solid lightgray;
+            .input1_TextField {
+              width: 95%;
+            }
+            .MuiInputLabel-outlined {
+              color: #5f6368;
             }
           }
-          .password_HelperText {
-            font-size: 13px;
-            font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
-            color: #5f6368;
-            margin-left: 12px;
+          .confirmPassword, .RecoveryEmail {
+            @include HW(40px, 50%);
+            display: flex;
             // border: 0.5px solid lightgray;
+
+            .input2_TextField {
+              width: 95%;
+            }
+            .MuiInputLabel-outlined {
+              color: #5f6368;
+            }
           }
         }
+        .password_HelperText {
+          font-size: 13px;
+          font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
+          color: #5f6368;
+          margin-left: 12px;
+          // border: 0.5px solid lightgray;
+        }
+
         .show_password {
           display: flex;
-          margin: 10px 0 0 0;
+          margin: 0px 0 0 0;
           .s_passwordText {
             margin-left: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include flexcenter(center, center);
+
             font-size: 16px;
             font-family: "roboto", "Noto Sans Myanmar UI", arial, sans-serif;
           }
@@ -224,9 +224,9 @@
       }
       .bottom_Button {
         width: 98%;
-        display: flex;
-        justify-content: space-between;
-        margin: 40px 10px 0 0;
+        @include flexcenter(space-between, none);
+
+        margin: 50px 10px 0 0;
         .signIn_Button {
           .s_Button {
             font-family: "Google Sans", "Roboto", Arial, sans-serif;
@@ -240,8 +240,7 @@
         .next_Button {
           width: 100px;
           .MuiButton-root {
-            width: 100px;
-            height: 40px;
+            @include HW(40px, 100px);
             font-family: "Google Sans", "Roboto", Arial, sans-serif;
             background-color: #1a73e8;
             text-transform: none;
@@ -251,25 +250,19 @@
       }
     }
     .image_Container {
-      height: 100%;
-      width: 338px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
+      @include HW(100%, 338px);
+      @include flexcenter(center, flex-end);
+
       flex-direction: column;
       .image_Subcontainer {
         width: 284px;
         .image_Field {
           width: 284px;
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
+          @include flexcenter(flex-end, center);
+
           .image {
-            height: 284px;
-            width: 284px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
+            @include HW(284px, 284px);
+            @include flexcenter(flex-end, center);
           }
         }
         .image_Text {
@@ -282,19 +275,22 @@
       }
     }
   }
+  .MuiInputBase-input{
+    height: 16px;
+  }
 }
 
 .errorMessage1 {
-  margin: 3px 0 15px 0;
-  width: 100%;
-  height: 20px;
+  margin: 3px 0 5px 0;
+  @include HW(20px, 100%);
   // border: 0.5px solid lightgray;
   color: #d93025;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  @include flexcenter(flex-start, center);
+
   .errorText {
     margin: 0 0 0 8px;
     font-size: 12px;
   }
 }
+
+

@@ -4,10 +4,21 @@ npx create-react-app googleforms
 cd googleforms
 npm start
 
+
 #Sass Error
+
+---------------------------------
 
 npm add node-sass
 npm rebuild node-sass
+
+---------------------------------
+
+npm remove node-sass
+npm start
+npm add node-sass
+
+---------------------------------
 
 # Material Ui installation
 
@@ -22,3 +33,4 @@ npm install @material-ui/icons
 #install react-router-dom
 
 npm install react-router-dom --save
+
